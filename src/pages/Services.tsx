@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
@@ -8,7 +7,7 @@ import {
   Users,
   Heart,
   Sprout,
-  Energy,
+  Zap, // Replaced Energy with Zap which is a similar lightning/energy icon
   Globe,
   MapPin,
   Footprints
@@ -37,7 +36,7 @@ const ServicesPage = () => {
       description: "Forest Protection, Participatory Forest Management, and Stakeholder Collaboration."
     },
     {
-      icon: Energy,
+      icon: Zap, // Changed from Energy to Zap
       title: "Sustainability Programs",
       description: "Alternative Energy Sources, Sustainable Livelihoods, and Beekeeping Initiatives."
     },
