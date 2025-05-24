@@ -73,23 +73,7 @@ const Header = () => {
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
-<div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-amber-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-emerald-100">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
-              <Sprout className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-emerald-800">Pelis Agroforest System</h1>
-              <p className="text-sm text-emerald-600">NNECFA Digital Platform</p>
-            </div>
-          </div>
-          <Button 
-            onClick={() => setIsAuthOpen(true)}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white"
-          >
+          
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden bg-white border-t border-gray-200 py-4 animate-fade-in">
