@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Phone, AlertTriangle } from 'lucide-react';
 
@@ -7,11 +8,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Community', href: '#community' },
-    { name: 'News', href: '#news' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Archives', href: '/archives' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
@@ -20,7 +22,7 @@ const Header = () => {
       <div className="bg-red-600 text-white py-2 px-4 text-center">
         <div className="flex items-center justify-center gap-2 text-sm font-medium">
           <AlertTriangle className="h-4 w-4" />
-          <span>Emergency: 000 | Fire Information Hotline: 1800 240 667</span>
+          <span>Contact us for forest conservation support: +254 700 000 000</span>
         </div>
       </div>
 
@@ -34,30 +36,30 @@ const Header = () => {
                 <span className="text-white font-bold text-lg">CFA</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-cfa-green-600">Escarpment Echo</h1>
-                <p className="text-xs text-gray-600">Community Fire Authority</p>
+                <h1 className="text-xl font-bold text-cfa-green-600">Nandi North Escarpment</h1>
+                <p className="text-xs text-gray-600">Community Forest Association</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-gray-700 hover:text-cfa-green-600 font-medium transition-colors duration-200 relative group"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cfa-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </Link>
               ))}
             </nav>
 
-            {/* Emergency Contact Button */}
+            {/* Contact Button */}
             <div className="hidden md:flex items-center space-x-4">
               <Button className="bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                Emergency: 000
+                Contact Us
               </Button>
             </div>
 
@@ -77,19 +79,19 @@ const Header = () => {
             <div className="md:hidden bg-white border-t border-gray-200 py-4 animate-fade-in">
               <nav className="flex flex-col space-y-3">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.href}
                     className="px-4 py-2 text-gray-700 hover:text-cfa-green-600 hover:bg-gray-50 transition-colors duration-200"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
                 <div className="px-4 pt-2">
                   <Button className="w-full bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white flex items-center justify-center gap-2">
                     <Phone className="h-4 w-4" />
-                    Emergency: 000
+                    Contact Us
                   </Button>
                 </div>
               </nav>

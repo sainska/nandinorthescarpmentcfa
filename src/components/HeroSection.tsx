@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
+          backgroundImage: `url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
@@ -22,17 +22,16 @@ const HeroSection = () => {
           {/* Main Content */}
           <div className="text-white animate-fade-in">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 text-shadow">
-              Protecting Our
-              <span className="block text-cfa-orange-400">Community</span>
+              Nandi North
+              <span className="block text-cfa-orange-400">Escarpment CFA</span>
             </h1>
             <p className="text-xl lg:text-2xl mb-8 text-gray-200 leading-relaxed">
-              Dedicated to fire prevention, emergency response, and community safety in the Escarpment Echo region.
+              Dedicated to forest conservation, environmental protection, and sustainable community development.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button size="lg" className="bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white text-lg px-8 py-4">
-                <Phone className="mr-2 h-5 w-5" />
-                Emergency: 000
+                Join Our Efforts
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cfa-green-600 text-lg px-8 py-4">
                 Learn More
@@ -42,36 +41,38 @@ const HeroSection = () => {
             {/* Quick Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-cfa-orange-400">24/7</div>
-                <div className="text-sm text-gray-300">Emergency Response</div>
+                <div className="text-3xl font-bold text-cfa-orange-400">2009</div>
+                <div className="text-sm text-gray-300">Established</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-cfa-orange-400">150+</div>
-                <div className="text-sm text-gray-300">Volunteers</div>
+                <div className="text-3xl font-bold text-cfa-orange-400">10,500+</div>
+                <div className="text-sm text-gray-300">Hectares Protected</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-cfa-orange-400">25k</div>
-                <div className="text-sm text-gray-300">People Protected</div>
+                <div className="text-3xl font-bold text-cfa-orange-400">9+</div>
+                <div className="text-sm text-gray-300">Communities Involved</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-cfa-orange-400">30+</div>
-                <div className="text-sm text-gray-300">Years Service</div>
+                <div className="text-3xl font-bold text-cfa-orange-400">1,900-2,250m</div>
+                <div className="text-sm text-gray-300">Altitude Range</div>
               </div>
             </div>
           </div>
 
-          {/* Emergency Info Cards */}
+          {/* Information Cards */}
           <div className="space-y-6 animate-slide-in-right">
             <Card className="p-6 bg-white/95 backdrop-blur border-0 shadow-xl">
               <div className="flex items-start space-x-4">
-                <div className="p-3 bg-red-100 rounded-full">
-                  <Phone className="h-6 w-6 text-red-600" />
+                <div className="p-3 bg-cfa-green-100 rounded-full">
+                  <Shield className="h-6 w-6 text-cfa-green-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Emergency Contact</h3>
-                  <p className="text-gray-600 mb-3">For life-threatening emergencies</p>
-                  <Button className="bg-red-600 hover:bg-red-700 text-white">
-                    Call 000 Now
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Community Forest Association</h3>
+                  <p className="text-gray-600 mb-3">
+                    Working in collaboration with the Kenya Forest Service since 2009
+                  </p>
+                  <Button className="bg-cfa-green-600 hover:bg-cfa-green-700 text-white">
+                    Learn About Us
                   </Button>
                 </div>
               </div>
@@ -83,14 +84,11 @@ const HeroSection = () => {
                   <MapPin className="h-6 w-6 text-cfa-orange-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Fire Danger Rating</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Forest Location</h3>
                   <div className="flex items-center space-x-3 mb-3">
-                    <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
-                      MODERATE
-                    </span>
-                    <span className="text-gray-600">Today</span>
+                    <span className="text-gray-600">Nandi County, Kenya</span>
                   </div>
-                  <p className="text-gray-600 text-sm">Check conditions before outdoor activities</p>
+                  <p className="text-gray-600 text-sm">Bordering South Nandi, Kakamega, and Malava forests</p>
                 </div>
               </div>
             </Card>
@@ -101,11 +99,10 @@ const HeroSection = () => {
                   <Clock className="h-6 w-6 text-cfa-green-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Station Hours</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Communities</h3>
                   <div className="space-y-1 text-gray-600">
-                    <p><strong>Emergency:</strong> 24/7</p>
-                    <p><strong>Office:</strong> Mon-Fri 9AM-5PM</p>
-                    <p><strong>Training:</strong> Wed 7PM-9PM</p>
+                    <p>Kiptuiya, Kombe, Kaptel, Sangalo, Kebulonik</p>
+                    <p>Kurgung, Kamung'ei, Kipng'oror, Chepterwai</p>
                   </div>
                 </div>
               </div>
