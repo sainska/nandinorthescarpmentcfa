@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Shield, Target, Users } from 'lucide-react';
@@ -32,11 +31,11 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-bold text-cfa-green-600 mb-6">Location of Nandi North Forest</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
                   Nandi North Forest is located in Nandi County, Kenya, spanning across 10,500.7 hectares. The forest is situated within 
                   the boundaries of North Nandi and Chesumei sub-counties, bordering South Nandi, Kakamega, and Malava forests.
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   At an altitude ranging from 1,900 to 2,250 meters above sea level, the forest represents a significant ecological 
                   zone within the Mau Complex, contributing to the region's biodiversity and water resources.
                 </p>

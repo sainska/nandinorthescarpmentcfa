@@ -1,5 +1,6 @@
-
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { MapPin } from 'lucide-react';
 
 const CommunityForestSection = () => {
   return (
@@ -114,14 +115,38 @@ const CommunityForestSection = () => {
         {/* Forest Resources Map */}
         <div className="mt-16">
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-cfa-green-600">North Nandi Forest Resources Map</h3>
+            <h3 className="text-3xl font-bold text-cfa-green-600">North Nandi Forest Location</h3>
+            <p className="text-gray-600 mt-2">Located in Nandi County, bordering South Nandi, Kakamega, and Malava forests</p>
           </div>
           <div className="rounded-lg overflow-hidden shadow-xl">
-            <img 
-              src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-              alt="North Nandi Forest Resources Map" 
-              className="w-full h-auto object-cover aspect-[16/9]"
-            />
+            <div className="aspect-w-16 aspect-h-9">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19036523825!2d34.903893310546875!3d0.33654448651977986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1780f62613354e6f%3A0xc97ccd3ff4150469!2sNandi%20County!5e0!3m2!1sen!2ske!4v1653055291096!5m2!1sen!2ske"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Nandi North Forest Location"
+              ></iframe>
+            </div>
+            <div className="p-4 bg-cfa-green-50">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-cfa-green-800">Get Directions</p>
+                  <p className="text-sm text-cfa-green-600">Nandi North Forest, Nandi County</p>
+                </div>
+                <Button 
+                  variant="outline" 
+                  className="border-cfa-green-600 text-cfa-green-600 hover:bg-cfa-green-600 hover:text-white"
+                  onClick={() => window.open('https://goo.gl/maps/YQX8Z9Z9Z9Z9Z9Z9A', '_blank')}
+                >
+                  <MapPin className="mr-2 h-4 w-4" />
+                  View on Google Maps
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

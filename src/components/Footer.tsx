@@ -1,4 +1,3 @@
-
 import { 
   Phone, 
   Mail, 
@@ -15,16 +14,16 @@ import {
 const Footer = () => {
   const quickLinks = [
     { name: "Emergency Services", href: "#services" },
-    { name: "Volunteer Program", href: "#community" },
-    { name: "Fire Safety Tips", href: "#community" },
-    { name: "Station Tours", href: "#contact" },
+    { name: "Forest Conservation", href: "#community" },
+    { name: "Environmental Tips", href: "#community" },
+    { name: "Community Programs", href: "#contact" },
     { name: "News & Updates", href: "#news" }
   ];
 
   const resources = [
-    { name: "Fire Danger Ratings", href: "#" },
-    { name: "Emergency Plans", href: "#" },
-    { name: "Weather Warnings", href: "#" },
+    { name: "Forest Management Plans", href: "#" },
+    { name: "Emergency Response", href: "#" },
+    { name: "Weather Alerts", href: "#" },
     { name: "Community Guidelines", href: "#" },
     { name: "Training Resources", href: "#" }
   ];
@@ -37,12 +36,12 @@ const Footer = () => {
           <div className="flex items-center justify-center space-x-6 text-center">
             <div className="flex items-center space-x-2">
               <AlertTriangle className="h-5 w-5" />
-              <span className="font-semibold">Emergency: 000</span>
+              <span className="font-semibold">Emergency: 1548</span>
             </div>
             <div className="hidden sm:block h-6 w-px bg-red-400"></div>
             <div className="flex items-center space-x-2">
               <Phone className="h-5 w-5" />
-              <span>Fire Info: 1800 240 667</span>
+              <span>Forest Info: +254721733902</span>
             </div>
           </div>
         </div>
@@ -58,27 +57,28 @@ const Footer = () => {
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Escarpment Echo CFA</h3>
-                <p className="text-cfa-green-200">Community Fire Authority</p>
+                <h3 className="text-2xl font-bold">Nandi North Escarpment</h3>
+                <p className="text-cfa-green-200">Community Forest Association</p>
               </div>
             </div>
             <p className="text-cfa-green-100 mb-6 leading-relaxed">
-              Protecting our community through dedicated volunteer service, fire prevention education, 
-              and emergency response. Serving the Escarpment Echo region with pride since 1994.
+              Dedicated to sustainable forest management and conservation efforts in Nandi County. 
+              Working in collaboration with the Kenya Forest Service since 2009 to promote environmental 
+              conservation while improving the livelihoods of local communities.
             </p>
             
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-cfa-orange-400" />
-                <span className="text-cfa-green-100">123 Mountain View Road, Escarpment Echo VIC 3000</span>
+                <span className="text-cfa-green-100">Chomisia, Kapsabet, Kenya</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-cfa-orange-400" />
-                <span className="text-cfa-green-100">(03) 5555 1234</span>
+                <span className="text-cfa-green-100">+254721733902</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-cfa-orange-400" />
-                <span className="text-cfa-green-100">info@escarpmentecho.cfa.vic.gov.au</span>
+                <span className="text-cfa-green-100">support@nandinorthescarpmentcfa.org</span>
               </div>
             </div>
           </div>
@@ -142,10 +142,10 @@ const Footer = () => {
             <div className="text-center md:text-right">
               <div className="flex items-center justify-center md:justify-end space-x-2 mb-3">
                 <Heart className="h-5 w-5 text-cfa-orange-400" />
-                <span className="text-cfa-green-100">Volunteer-powered since 1994</span>
+                <span className="text-cfa-green-100">Serving communities since 2009</span>
               </div>
               <p className="text-cfa-green-200 text-sm">
-                Part of Country Fire Authority Victoria
+                In Partnership with Kenya Forest Service
               </p>
             </div>
           </div>
@@ -157,7 +157,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between text-sm">
             <p className="text-cfa-green-300 mb-2 md:mb-0">
-              © 2024 Escarpment Echo Community Fire Authority. All rights reserved.
+              © 2024 Nandi North Escarpment Community Forest Association. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-cfa-green-300 hover:text-white transition-colors duration-200">

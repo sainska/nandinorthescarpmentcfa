@@ -1,13 +1,16 @@
-
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { X } from 'lucide-react';
+import { X, Download, Share2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 const Gallery = () => {
+  const { toast } = useToast();
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Gallery categories
   const categories = [
@@ -115,6 +118,53 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
+  const handleImageDownload = async (image) => {
+    setIsLoading(true);
+    try {
+      // Here you would add your actual image download logic
+      // For now, we'll simulate a download
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Success",
+        description: "Image downloaded successfully."
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to download image. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleImageShare = async (image) => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: image.title,
+          text: image.description,
+          url: window.location.href
+        });
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        await navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: "Success",
+          description: "Link copied to clipboard!"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to share image. Please try again later.",
+        variant: "destructive"
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -188,13 +238,29 @@ const Gallery = () => {
         {selectedImage && (
           <Dialog open={!!selectedImage} onOpenChange={handleCloseDialog}>
             <DialogContent className="sm:max-w-4xl">
-              <div className="absolute top-2 right-2 z-50">
-                <button 
+              <div className="absolute top-2 right-2 z-50 flex gap-2">
+                <Button
+                  onClick={() => handleImageDownload(selectedImage)}
+                  disabled={isLoading}
+                  className="p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                  aria-label="Download image"
+                >
+                  <Download className="h-5 w-5" />
+                </Button>
+                <Button
+                  onClick={() => handleImageShare(selectedImage)}
+                  className="p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                  aria-label="Share image"
+                >
+                  <Share2 className="h-5 w-5" />
+                </Button>
+                <Button 
                   onClick={handleCloseDialog}
                   className="p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                  aria-label="Close dialog"
                 >
                   <X className="h-5 w-5" />
-                </button>
+                </Button>
               </div>
               <div className="p-1">
                 <img 

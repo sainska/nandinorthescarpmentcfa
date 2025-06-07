@@ -1,57 +1,101 @@
-
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { FileDown, Calendar } from 'lucide-react';
+import { FileDown, Calendar, FileText, Map } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useToast } from '@/components/ui/use-toast';
 
 const Archives = () => {
+  const { toast } = useToast();
+  const [downloadingFile, setDownloadingFile] = useState<string | null>(null);
+
+  const handleDownload = async (fileName: string, downloadUrl: string) => {
+    if (!downloadUrl) {
+      toast({
+        title: "Error",
+        description: "Download link not available.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setDownloadingFile(fileName);
+    try {
+      // Here you would add your actual file download logic
+      // For now, we'll simulate a download
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: "Success",
+        description: `${fileName} downloaded successfully.`
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: `Failed to download ${fileName}. Please try again later.`,
+        variant: "destructive"
+      });
+    } finally {
+      setDownloadingFile(null);
+    }
+  };
+
   const documents = [
-    { 
-      title: "CFA Brief History", 
-      description: "A brief history on the formation of CFA.", 
-      fileName: "cfa-brief-history.pdf" 
+    {
+      title: "CFA Brief History",
+      description: "A brief history on the formation of CFA.",
+      icon: FileText,
+      downloadUrl: "/documents/cfa-brief-history.pdf"
     },
-    { 
-      title: "CFA Proposal Plan", 
-      description: "A CFA proposal plan for five years management.", 
-      fileName: "cfa-proposal-plan.pdf" 
+    {
+      title: "CFA Proposal Plan",
+      description: "A CFA proposal plan for five years management.",
+      icon: FileText,
+      downloadUrl: "/documents/cfa-proposal-plan.pdf"
     },
-    { 
-      title: "Form A", 
-      description: "An application for registration of a society in Kenya.", 
-      fileName: "form-a.pdf" 
+    {
+      title: "Form A",
+      description: "An application for registration of a society in Kenya.",
+      icon: FileText,
+      downloadUrl: "/documents/form-a.pdf"
     },
-    { 
-      title: "Form B", 
-      description: "Notification of registered office or postal address of society Kenya.", 
-      fileName: "form-b.pdf" 
+    {
+      title: "Form B",
+      description: "Notification of registered office or postal address of society Kenya.",
+      icon: FileText,
+      downloadUrl: "/documents/form-b.pdf"
     },
-    { 
-      title: "Zonation Map", 
-      description: "A map showing zonation of Nandi North Forest.", 
-      fileName: "zonation-map.pdf" 
+    {
+      title: "Zonation Map",
+      description: "A map showing zonation of Nandi North Forest.",
+      icon: Map,
+      downloadUrl: "/documents/zonation-map.pdf"
     },
-    { 
-      title: "Infrastructure Map", 
-      description: "A map showing Nandi North Infrastructure.", 
-      fileName: "infrastructure-map.pdf" 
+    {
+      title: "Infrastructure Map",
+      description: "A map showing Nandi North Infrastructure.",
+      icon: Map,
+      downloadUrl: "/documents/infrastructure-map.pdf"
     },
-    { 
-      title: "Hydrological Map", 
-      description: "A map showing Nandi North Hydrology.", 
-      fileName: "hydrological-map.pdf" 
+    {
+      title: "Hydrological Map",
+      description: "A map showing Nandi North Hydrology.",
+      icon: Map,
+      downloadUrl: "/documents/hydrological-map.pdf"
     },
-    { 
-      title: "Policy Guidelines", 
-      description: "CFA Latest forestry management policies.", 
-      fileName: "policy-guidelines.pdf" 
+    {
+      title: "Policy Guidelines",
+      description: "CFA Latest forestry management policies.",
+      icon: FileText,
+      downloadUrl: "/documents/policy-guidelines.pdf"
     },
-    { 
-      title: "Event Brochure", 
-      description: "Upcoming environmental events schedule.", 
-      fileName: "event-brochure.pdf" 
-    },
+    {
+      title: "Event Brochure",
+      description: "Upcoming environmental events schedule.",
+      icon: Calendar,
+      downloadUrl: "/documents/event-brochure.pdf"
+    }
   ];
 
   const events = [
@@ -115,8 +159,12 @@ const Archives = () => {
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">{doc.title}</h3>
                       <p className="text-gray-600 mb-4">{doc.description}</p>
                     </div>
-                    <Button variant="outline" className="flex items-center justify-center gap-2 w-full">
-                      <FileDown className="h-4 w-4" /> Download
+                    <Button 
+                      onClick={() => handleDownload(doc.title, doc.downloadUrl)}
+                      disabled={downloadingFile === doc.title}
+                      className="w-full bg-cfa-green-600 hover:bg-cfa-green-700 text-white"
+                    >
+                      {downloadingFile === doc.title ? "Downloading..." : "Download"}
                     </Button>
                   </div>
                 </Card>

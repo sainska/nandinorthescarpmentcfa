@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
@@ -10,52 +11,89 @@ import {
   Zap, // Replaced Energy with Zap which is a similar lightning/energy icon
   Globe,
   MapPin,
-  Footprints
+  Footprints,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 const ServicesPage = () => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   const servicesList = [
     {
       icon: Users,
-      title: "Community Workshops",
-      description: "Environmental Awareness Campaigns, Community Training, and Policy Advocacy."
+      title: "Forest Conservation",
+      description: "Implementation of forest conservation programs, protection activities, and sustainable resource management."
     },
     {
       icon: Sprout,
-      title: "Tree Planting Events",
-      description: "Reforestation, Agroforestry Promotion, and Rehabilitation of Degraded Areas."
+      title: "Plantation Development",
+      description: "Tree planting initiatives, nursery management, and rehabilitation of degraded forest areas."
     },
     {
       icon: GraduationCap,
-      title: "Conservation Education",
-      description: "Biodiversity Conservation, Water Resource Protection, and Sustainable Harvesting."
+      title: "Water Resource Management",
+      description: "Protection of water catchment areas, spring conservation, and sustainable water resource utilization."
     },
     {
       icon: Heart,
-      title: "Volunteer Opportunities",
-      description: "Forest Protection, Participatory Forest Management, and Stakeholder Collaboration."
+      title: "Eco-Tourism Development",
+      description: "Promotion of eco-tourism activities, nature trails development, and cultural heritage preservation."
     },
     {
-      icon: Zap, // Changed from Energy to Zap
-      title: "Sustainability Programs",
-      description: "Alternative Energy Sources, Sustainable Livelihoods, and Beekeeping Initiatives."
+      icon: Zap,
+      title: "Security & Protection",
+      description: "Forest protection programs, community policing, and prevention of illegal activities."
     },
     {
       icon: Globe,
-      title: "Community Outreach",
-      description: "Eco-Tourism Development, Firewood Collection Management, and Gender Inclusion."
+      title: "Community Participation",
+      description: "Stakeholder engagement, benefit sharing programs, and community development initiatives."
     },
     {
       icon: MapPin,
-      title: "Tourist Attraction & Guide",
-      description: "Experience guided tours of our natural landscapes, showcasing unique attractions and cultural heritage."
+      title: "Infrastructure Development",
+      description: "Development and maintenance of forest infrastructure, roads, and facilities."
     },
     {
       icon: Footprints,
-      title: "Wildlife Conservation",
-      description: "Dedicated efforts to protect wildlife through innovative conservation programs and active community involvement."
+      title: "Research & Development",
+      description: "Environmental research, monitoring programs, and knowledge sharing initiatives."
     }
   ];
+
+  const testimonials = [
+    {
+      quote: "Through protection, conservation, and sustainable utilization of Natural Resources for the betterment and empowerment of the community for present and future generations.",
+      author: "Community Vision Statement",
+      role: "Nandi North Escarpment CFA"
+    },
+    {
+      quote: "The CFA has revolutionized community conservation. Our forest is thriving and our community is benefiting from sustainable resource management.",
+      author: "Mr. William Keter",
+      role: "Community Member"
+    },
+    {
+      quote: "Working together with KFS and local communities has created a model for sustainable forest management that benefits everyone.",
+      author: "Forest Management Team",
+      role: "Nandi North CFA"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <div className="min-h-screen">
@@ -105,36 +143,72 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* Testimonial Section */}
+        {/* Enhanced Testimonial Section */}
         <section className="py-16 bg-cfa-green-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-cfa-green-600 mb-4">Community Feedback</h2>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-white rounded-lg p-8 shadow-md">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 rounded-full overflow-hidden mb-4">
-                    <img 
-                      src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                      alt="Community Member" 
-                      className="w-full h-full object-cover"
-                    />
+            <div className="max-w-4xl mx-auto relative">
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
+                <button 
+                  onClick={prevTestimonial}
+                  className="p-2 rounded-full bg-white shadow-lg hover:bg-cfa-green-50 transition-colors"
+                >
+                  <ChevronLeft className="h-6 w-6 text-cfa-green-600" />
+                </button>
+              </div>
+
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
+                <button 
+                  onClick={nextTestimonial}
+                  className="p-2 rounded-full bg-white shadow-lg hover:bg-cfa-green-50 transition-colors"
+                >
+                  <ChevronRight className="h-6 w-6 text-cfa-green-600" />
+                </button>
+              </div>
+
+              <div className="overflow-hidden">
+                <div 
+                  className="transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+                >
+                  <div className="flex">
+                    {testimonials.map((testimonial, index) => (
+                      <div 
+                        key={index}
+                        className="w-full flex-shrink-0 px-4"
+                      >
+                        <Card className="bg-white rounded-lg p-8 shadow-md">
+                          <div className="flex flex-col items-center text-center">
+                            <div className="w-20 h-20 rounded-full overflow-hidden mb-4 bg-cfa-green-100 flex items-center justify-center">
+                              <Users className="h-10 w-10 text-cfa-green-600" />
+                            </div>
+                            <blockquote className="text-xl text-gray-700 italic mb-6">
+                              "{testimonial.quote}"
+                            </blockquote>
+                            <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                            <p className="text-cfa-green-600">{testimonial.role}</p>
+                          </div>
+                        </Card>
+                      </div>
+                    ))}
                   </div>
-                  <blockquote className="text-xl text-gray-700 italic mb-4">
-                    "The CFA has revolutionized community conservation. Our forest is thriving!"
-                  </blockquote>
-                  <p className="font-semibold text-gray-900">Mr. Wiliam Keter</p>
                 </div>
               </div>
-            </div>
 
-            <div className="mt-12 text-center">
-              <blockquote className="text-lg text-cfa-green-700 italic">
-                "Through protection, conservation, and sustainable utilization of Natural Resources for the betterment and 
-                empowerment of the community for present and future generations."
-              </blockquote>
+              <div className="flex justify-center mt-6 space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                      currentTestimonial === index ? 'bg-cfa-green-600' : 'bg-cfa-green-200'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>

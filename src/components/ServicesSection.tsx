@@ -1,66 +1,65 @@
-
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
-  Flame, 
-  Truck, 
-  Users, 
-  Heart, 
-  Search, 
   TreePine,
-  Home,
-  GraduationCap 
+  Users,
+  Sprout,
+  Leaf,
+  ShieldCheck,
+  Store,
+  GraduationCap,
+  Laptop
 } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: Flame,
-      title: "Fire Suppression",
-      description: "Rapid response to structure fires, bushfires, and emergency incidents with state-of-the-art equipment and trained personnel.",
-      features: ["24/7 Emergency Response", "Advanced Equipment", "Trained Firefighters"]
-    },
-    {
-      icon: Truck,
-      title: "Emergency Response",
-      description: "Comprehensive emergency services including road accident rescue, storm damage response, and hazardous material incidents.",
-      features: ["Road Crash Rescue", "Storm Response", "Hazmat Support"]
-    },
-    {
-      icon: Heart,
-      title: "First Aid Services",
-      description: "Emergency medical assistance and first aid support at community events and emergency incidents.",
-      features: ["Medical Support", "Event Coverage", "CPR Training"]
-    },
-    {
-      icon: Search,
-      title: "Search & Rescue",
-      description: "Specialized search and rescue operations for missing persons in wilderness and urban environments.",
-      features: ["Wilderness Search", "Urban Rescue", "Drone Technology"]
-    },
-    {
       icon: TreePine,
-      title: "Wildfire Prevention",
-      description: "Proactive wildfire prevention through controlled burns, vegetation management, and community education.",
-      features: ["Controlled Burns", "Fuel Reduction", "Risk Assessment"]
+      title: "PELIS Agroforestry",
+      description: "Join our Plantation Establishment and Livelihood Improvement Scheme for sustainable forest management and community development.",
+      features: ["Secure Registration", "Digital Management", "Community Benefits"]
     },
     {
-      icon: Home,
-      title: "Property Protection",
-      description: "Home safety inspections, fire prevention advice, and assistance with emergency preparedness planning.",
-      features: ["Safety Inspections", "Emergency Planning", "Prevention Advice"]
+      icon: Laptop,
+      title: "Digital Platform",
+      description: "Access our advanced digital forest management platform for seamless operations and monitoring.",
+      features: ["Online Registration", "Payment System", "Resource Management"]
+    },
+    {
+      icon: Store,
+      title: "Forest Marketplace",
+      description: "Connect with buyers and sellers in our integrated marketplace for sustainable forest products.",
+      features: ["Product Listings", "Secure Transactions", "Quality Control"]
+    },
+    {
+      icon: ShieldCheck,
+      title: "Forest Protection",
+      description: "Comprehensive forest protection services including monitoring, conservation, and sustainable management.",
+      features: ["24/7 Monitoring", "Rapid Response", "Conservation Plans"]
+    },
+    {
+      icon: Sprout,
+      title: "Plantation Management",
+      description: "Expert guidance and support for establishing and managing forest plantations sustainably.",
+      features: ["Site Planning", "Species Selection", "Growth Monitoring"]
+    },
+    {
+      icon: Leaf,
+      title: "Environmental Services",
+      description: "Environmental impact assessment and ecosystem services management for sustainable forestry.",
+      features: ["Impact Assessment", "Biodiversity", "Carbon Credits"]
     },
     {
       icon: Users,
-      title: "Community Education",
-      description: "Fire safety education programs for schools, businesses, and community groups.",
-      features: ["School Programs", "Public Workshops", "Safety Demonstrations"]
+      title: "Community Programs",
+      description: "Engaging community programs for sustainable forest management and livelihood improvement.",
+      features: ["Training Programs", "Support Groups", "Resource Sharing"]
     },
     {
       icon: GraduationCap,
-      title: "Volunteer Training",
-      description: "Comprehensive training programs for community members interested in joining our volunteer brigade.",
-      features: ["Basic Training", "Advanced Skills", "Leadership Development"]
+      title: "Capacity Building",
+      description: "Training and development programs for community members in forest management and conservation.",
+      features: ["Technical Training", "Best Practices", "Leadership Skills"]
     }
   ];
 
@@ -73,8 +72,8 @@ const ServicesSection = () => {
             Our Services
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive emergency services and community programs designed to protect lives, 
-            property, and the environment in our region.
+            Advanced digital forest management services and community programs designed for 
+            sustainable forest conservation and community development.
           </p>
         </div>
 
@@ -109,17 +108,17 @@ const ServicesSection = () => {
         <div className="text-center">
           <div className="bg-white rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-cfa-green-600 mb-4">
-              Need Our Services?
+              Join PELIS Agroforestry
             </h3>
             <p className="text-gray-600 mb-6 text-lg">
-              For emergencies call 000. For non-emergency services or information, contact our station directly.
+              Register for our digital platform to access forest management tools and community resources.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8">
-                Emergency: 000
+              <Button size="lg" className="bg-cfa-green-600 hover:bg-cfa-green-700 text-white px-8">
+                Register Now
               </Button>
               <Button size="lg" variant="outline" className="border-cfa-green-600 text-cfa-green-600 hover:bg-cfa-green-600 hover:text-white px-8">
-                Contact Station
+                Learn More
               </Button>
             </div>
           </div>

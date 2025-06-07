@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,39 +8,60 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     
-    // In a real application, you would send this data to a server
-    console.log('Form submitted:', formData);
-    
-    // Show success message
-    toast({
-      title: "Message sent",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    try {
+      // Here you would add your actual API call
+      // For now, we'll simulate an API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Show success message
+      toast({
+        title: "Message sent",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      // Show error message
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -127,8 +147,12 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-cfa-green-600 hover:bg-cfa-green-700 text-white">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-cfa-green-600 hover:bg-cfa-green-700 text-white"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "Sending..." : "Send Message"}
                     </Button>
                   </div>
                 </form>
@@ -145,8 +169,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Location</h3>
-                      <p className="text-gray-700">Nandi North, Nandi County, Kenya</p>
-                      <p className="text-gray-700">Near North Nandi Forest</p>
+                      <p className="text-gray-700">Chomisia, Kapsabet, Kenya</p>
                     </div>
                   </div>
 
@@ -156,8 +179,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Email</h3>
-                      <p className="text-gray-700">info@nandinorthcfa.org</p>
-                      <p className="text-gray-700">support@nandinorthcfa.org</p>
+                      <p className="text-gray-700">support@nandinorthescarpmentcfa.org</p>
                     </div>
                   </div>
 
@@ -167,8 +189,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Phone</h3>
-                      <p className="text-gray-700">+254 700 000 000</p>
-                      <p className="text-gray-700">+254 720 000 000</p>
+                      <p className="text-gray-700">+254721733902</p>
                     </div>
                   </div>
 

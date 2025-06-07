@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Phone, MapPin, Clock, Shield } from 'lucide-react';
@@ -30,10 +29,19 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button size="lg" className="bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white text-lg px-8 py-4">
+              <Button 
+                size="lg" 
+                className="bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white text-lg px-8 py-4"
+                onClick={() => window.location.href = '/pelis'}
+              >
                 Join Our Efforts
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cfa-green-600 text-lg px-8 py-4">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-cfa-green-600 text-lg px-8 py-4"
+                onClick={() => window.location.href = '/about'}
+              >
                 Learn More
               </Button>
             </div>
@@ -71,7 +79,10 @@ const HeroSection = () => {
                   <p className="text-gray-600 mb-3">
                     Working in collaboration with the Kenya Forest Service since 2009
                   </p>
-                  <Button className="bg-cfa-green-600 hover:bg-cfa-green-700 text-white">
+                  <Button 
+                    className="bg-cfa-green-600 hover:bg-cfa-green-700 text-white"
+                    onClick={() => window.location.href = '/about'}
+                  >
                     Learn About Us
                   </Button>
                 </div>

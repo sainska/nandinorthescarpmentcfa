@@ -1,4 +1,3 @@
-
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -9,19 +8,21 @@ import {
   AlertTriangle,
   Info,
   Award,
-  ArrowRight
+  ArrowRight,
+  TreePine,
+  Shield
 } from 'lucide-react';
 
 const NewsSection = () => {
   const news = [
     {
       type: "alert",
-      badge: "Fire Warning",
+      badge: "Conservation Alert",
       badgeColor: "bg-red-100 text-red-800",
-      title: "Total Fire Ban in Effect",
-      excerpt: "A total fire ban is now in place across the region due to extreme weather conditions. All outdoor fires are prohibited.",
+      title: "Critical Forest Protection Notice",
+      excerpt: "Urgent notice: Increased monitoring of forest boundaries due to recent encroachment attempts. Community vigilance required.",
       date: "December 12, 2024",
-      author: "Fire Safety Officer",
+      author: "Forest Conservation Officer",
       urgent: true,
       image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
@@ -29,10 +30,10 @@ const NewsSection = () => {
       type: "news",
       badge: "Community",
       badgeColor: "bg-blue-100 text-blue-800",
-      title: "New Fire Truck Arrives at Station",
-      excerpt: "Our brigade has received a state-of-the-art fire truck equipped with the latest technology to enhance our emergency response capabilities.",
+      title: "New Forest Rangers Join Team",
+      excerpt: "Our forest protection team welcomes five new rangers equipped with modern conservation technology.",
       date: "December 10, 2024",
-      author: "Station Captain",
+      author: "CFA Secretary",
       urgent: false,
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
@@ -40,10 +41,10 @@ const NewsSection = () => {
       type: "achievement",
       badge: "Achievement",
       badgeColor: "bg-green-100 text-green-800",
-      title: "Volunteer Recognition Awards",
-      excerpt: "Five of our dedicated volunteers received state recognition for their outstanding service to the community during the past year.",
+      title: "Community Conservation Awards",
+      excerpt: "Local community members recognized for outstanding contributions to forest conservation efforts.",
       date: "December 8, 2024",
-      author: "Brigade Captain",
+      author: "CFA Chairman",
       urgent: false,
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
@@ -85,11 +86,11 @@ const NewsSection = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'alert':
-        return AlertTriangle;
+        return Shield;
       case 'achievement':
         return Award;
       default:
-        return Info;
+        return TreePine;
     }
   };
 
@@ -102,7 +103,7 @@ const NewsSection = () => {
             News & Updates
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Stay informed about fire safety alerts, community events, and brigade activities.
+            Stay informed about forest conservation alerts, community events, and CFA activities.
           </p>
         </div>
 
@@ -111,7 +112,7 @@ const NewsSection = () => {
           <Card className="mb-12 border-l-4 border-red-500 bg-red-50 p-6">
             <div className="flex items-start space-x-4">
               <div className="p-3 bg-red-100 rounded-full">
-                <AlertTriangle className="h-6 w-6 text-red-600" />
+                <Shield className="h-6 w-6 text-red-600" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center space-x-3 mb-3">
@@ -133,7 +134,7 @@ const NewsSection = () => {
         )}
 
         {/* News Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {news.filter(item => !item.urgent).map((item, index) => {
             const IconComponent = getIcon(item.type);
             return (
@@ -150,60 +151,53 @@ const NewsSection = () => {
                     </Badge>
                   </div>
                 </div>
-                
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-cfa-green-600 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-gray-600 mb-4 line-clamp-3">
                     {item.excerpt}
                   </p>
-                  
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {item.date}
-                      </div>
-                      <div className="flex items-center">
-                        <User className="h-4 w-4 mr-1" />
-                        {item.author}
-                      </div>
+                  <div className="flex items-center justify-between text-sm text-gray-500">
+                    <div className="flex items-center space-x-2">
+                      <User className="h-4 w-4" />
+                      <span>{item.author}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{item.date}</span>
                     </div>
                   </div>
-                  
-                  <Button variant="outline" className="w-full group-hover:bg-cfa-green-600 group-hover:text-white group-hover:border-cfa-green-600 transition-all duration-200">
-                    Read More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
                 </div>
               </Card>
             );
           })}
         </div>
 
-        {/* Newsletter Signup */}
-        <Card className="p-8 bg-gradient-to-r from-cfa-green-600 to-cfa-green-500 text-white">
-          <div className="text-center max-w-2xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">Stay Informed</h3>
-            <p className="text-cfa-green-100 mb-6 text-lg">
-              Subscribe to our newsletter for the latest fire safety alerts, community news, and emergency updates.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 border-0"
-              />
-              <Button className="bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white px-6 py-3 whitespace-nowrap">
-                Subscribe
-              </Button>
+        {/* Newsletter Subscription */}
+        <div className="mt-16">
+          <Card className="p-8 bg-gradient-to-r from-cfa-green-600 to-cfa-green-500 text-white">
+            <div className="text-center max-w-2xl mx-auto">
+              <h3 className="text-3xl font-bold mb-4">Stay Informed</h3>
+              <p className="text-cfa-green-100 mb-6 text-lg">
+                Subscribe to our newsletter for the latest conservation alerts, community news, and environmental updates.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-lg text-gray-900 border-0"
+                />
+                <Button className="bg-cfa-orange-500 hover:bg-cfa-orange-600 text-white px-6 py-3 whitespace-nowrap">
+                  Subscribe
+                </Button>
+              </div>
+              <p className="text-xs text-cfa-green-200 mt-3">
+                We respect your privacy. Unsubscribe at any time.
+              </p>
             </div>
-            <p className="text-xs text-cfa-green-200 mt-3">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
     </section>
   );
